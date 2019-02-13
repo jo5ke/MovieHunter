@@ -1,0 +1,222 @@
+.ui-g {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img_holder {
+        img {
+            max-height: 330px;
+        }
+    }
+}
+
+.movies_holder {
+    transition: all 0.2s;
+    background: #333333bd;
+    display: flex;
+}
+
+.center_column {
+    transition: margin 0.4s ease-in;
+    &.center_column-active {
+        margin-left: 300px;
+    }
+    .hamburger {
+        width: 48px;
+        margin: 18px auto;
+        position: fixed;
+        cursor: pointer;
+        top: 0;
+        left: 20px;
+        height: 30px;
+        transition: all 300ms linear;
+        &:hover {
+            span {
+                background: #1db954;
+            }
+        }
+        span {
+            display: block;
+            height: 4px;
+            width: 90%;
+            background: #1db954;
+            position: absolute;
+            transition: .6s all;
+            border-radius: 100px;
+            &::nth-child(1) {
+                top: 0
+            }
+            &:nth-child(2) {
+                top: 11px;
+                transform-origin: left;
+            }
+            &:nth-child(3) {
+                top: 22px;
+            }
+        }
+    }
+    .open {
+        left: 235px;
+        span {
+            &:nth-child(1) {
+                transform: rotate(45deg);
+                top: 13px;
+                transform-origin: right-center;
+            }
+            &:nth-child(2) {
+                width: 0;
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: rotate(-45deg);
+                top: 13px;
+                transform-origin: right-center;
+            }
+        }
+    }
+    .movielist {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        .movie_card {
+            flex: 0 30%;
+            margin: 3% 1%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            img {
+                width: 100%;
+            }
+            .ui-card-footer {
+                display: flex;
+                justify-content: space-between;
+                max-width: 300px;
+                width: 300px;
+            }
+        }
+    }
+}
+
+.ui-button.ui-button-warning.ui-state-default,
+.ui-splitbutton.ui-button-warning .ui-button.ui-state-default {
+    background-color: #E8B708;
+    border-color: #E8B708;
+    color: #000;
+    font-weight: bold;
+}
+
+aside {
+    transform: translateX(-34.3vw);
+    transition: transform 300ms linear;
+    will-change: transform;
+    position: fixed;
+    top: 0;
+    left: 0;
+    .sidebar-menu {
+        height: 100vh;
+        background-color: rgba(0, 0, 0, .5);
+        background-attachment: fixed;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        z-index: 0;
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        padding: 0 20px;
+        input {
+            font-family: Roboto, sans-serif;
+        }
+        img {
+            width: 150px;
+            margin: 15px 0;
+        }
+        h1 {
+            color: #fff;
+        }
+        h2 {
+            color: #ababab;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: hsla(0, 0%, 100%, .6);
+            font-size: 18px;
+            padding: 5px 3px;
+            margin: 10px 0px;
+            &:hover {
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+        .favorite_list {
+            margin-top: 50px;
+            p {
+                color: #fff;
+            }
+        }
+    }
+    &.sidebar-menu-active {
+        transform: translateX(0vw);
+        position: fixed;
+    }
+}
+
+.navbar_holder {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+}
+
+.credits {
+    h6 {
+        position: absolute;
+        bottom: 0;
+        left: 3%;
+        color: #fff
+    }
+}
+
+.fa-star:before {
+    content: "\f005";
+    color: #1db954;
+}
+
+.movie_card {
+    h3 {
+        margin: 10px 0;
+    }
+    div {
+        .movie_poster {
+            height: 453px;
+            width: 300px;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.movie_right {
+    padding: 10px;
+    color: #fff;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+.imdbButton:hover {
+    background: #E8B708 !important;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@media all and (max-width: 600px) {}

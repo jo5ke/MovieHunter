@@ -1,0 +1,63 @@
+<div class="login_holder" @moviesFadeIn>
+    <div class="login_left_split">
+        <div [@formSlide]="state">
+            <div class="logo"><img src="assets/img/moviehunterfinal.png" alt="mns">
+            </div>
+            <div class="separator_container">
+                <div class="separator_line"></div>
+                <div class="separator_text">Already have an account?</div>
+                <div class="separator_line"></div>
+            </div>
+        </div>
+        <form [formGroup]="loginForm">
+            <div class="login_group" [@inputShows]="state">
+                <div class="ui-float-label">
+                    <input id="username" type="text" pInputText name="username" size="30" (click)="$event.target.select()" formControlName="username">
+                    <label for="username" required>Username</label>
+
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div *ngIf="username.errors['required']">
+                            *Username is required.
+                        </div>
+                        <div *ngIf="username.errors['minlength']">
+                            *Username must be at least {{unMinLength}} characters long.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-float-label">
+                    <input id="password" type="password" pInputText name="password" size="30" (keyup.enter)="toggleState()" (click)="$event.target.select()" formControlName="password">
+                    <label for="password">Password</label>
+
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                        <div *ngIf="password?.errors['required']">
+                            *Password is required.
+                        </div>
+                        <div *ngIf="password?.errors['minlength']">
+                            *Password must be at least {{pwMinLength}} characters long.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="login_button" (click)="toggleState()" role="button" type="submit">
+                Log In
+            </button>
+        </form>
+    </div>
+    <div class="login_right_split">
+        <div class="right_split_big_text">
+            Discover the best rated movies <br> that you should watch
+        </div>
+
+        <div class="right_split_medium_text">
+            Want an invite when a new movie is up? <a><span>Leave your contact</span></a>
+        </div>
+
+        <div class="right_split_small_text">
+            If you dont have an account, proceed to login and it will automatically create one for you.
+        </div>
+    </div>
+</div>

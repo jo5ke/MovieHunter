@@ -1,0 +1,107 @@
+<div class="ui-g">
+    <aside class="ui-g-2" [ngClass]="{'sidebar-menu-active': sidebarOpen}">
+        <div class="sidebar-menu">
+            <img src="assets/img/color.png" alt="booldog">
+            <h3> <i class="fa fa-search"></i> Search</h3>
+            <div class="ui-inputgroup">
+                <button pButton type="button" label="Search" (click)="searchMovies()"></button>
+                <input type="text" pInput placeholder="Keyword" name="movieSearch" [(ngModel)]="movieSearch" (keyup.enter)="searchMovies()" (click)="$event.target.select()">
+
+            </div>
+            <h3><i class="fa fa-film" aria-hidden="true"></i> Type</h3>
+            <div class="ui inputgroup">
+                <p-selectButton [options]="types" [(ngModel)]="mediaType" (click)="searchMovies()"></p-selectButton>
+            </div>
+            <div class="favorite_list" *ngIf="listOfFavorites.length > 0">
+                <h2>Recently Favorited: </h2>
+                <p *ngFor="let fav of listOfFavorites">
+                    {{fav}}
+                </p>
+            </div>
+            <div class="credits">
+                <h6 stlye="align-items: flex-end">Boopro Official Code&trade;</h6>
+            </div>
+        </div>
+    </aside>
+
+    <main class="center_column" [ngClass]="{'center_column-active': sidebarOpen}">
+        <div class="hamburger" [ngClass]="{'open': sidebarOpen}" (click)="openSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="movielist" *ngIf="listOfMovies?.length > 0 && listOfMovies !== undefined; else notFound">
+            <div class="movie_card" *ngFor="let movie of listOfMovies" @fade>
+
+                <h3>{{movie.Title}}</h3>
+                <div>
+                    <div [ngSwitch]="movie.Poster === 'N/A'">
+                        <div class="movie_poster" *ngSwitchCase="true">
+                            <img src="assets/img/unknown.jpg" alt="poster">
+                        </div>
+                        <div class="movie_poster" *ngSwitchCase="false">
+                            <img [src]="movie.Poster" alt="poster">
+                        </div>
+                        <div class="movie_poster" *ngSwitchDefault>
+                            <img [src]="movie.Poster" alt="poster">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-card-footer">
+                    <button pButton type="button" label="View" icon="fa-check" (click)="showSingleMovie(movie.imdbID)"></button>
+                    <p (click)="addToFavorites(movie)"><i class="fa fa-2x" [ngClass]="{'fa-star' : isFavorited(movie), 'fa-star-o' : !isFavorited(movie)}" pTooltip="Add to favorites" tooltipPosition="bottom"></i></p>
+                    <a href="https://www.imdb.com/title/{{movie.imdbID}}" target="new">
+                        <button class="fa-pull-right imdbButton" pButton type="button" label="IMDb"></button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<p-dialog header="{{ initialMovie?.Title }} ({{initialMovie?.Year}})" [(visible)]="showDialog" [width]="800" [dismissableMask]="true" [modal]="true" [responsive]="true" [minY]="70" [resizable]="false">
+    <div class="movies_holder" *ngIf="initialMovie !== undefined">
+        <div class="movie_left">
+            <div class="img_holder">
+                <span [ngSwitch]="initialMovie.Poster === 'N/A'">
+                                    <p *ngSwitchCase="true">
+                                            <img src="assets/img/unknown.jpg" alt="poster">
+                                    </p>
+                                    <p *ngSwitchCase="false">
+                                        <img [src]="initialMovie.Poster" alt="poster">
+                                    </p>
+                                    <p *ngSwitchDefault>
+                                            <img [src]="initialMovie.Poster" alt="poster">
+                                    </p>
+                                    </span>
+            </div>
+        </div>
+
+        <div class="movie_right">
+            <p-fieldset legend="Plot ">
+                {{ initialMovie.Plot }}
+            </p-fieldset>
+            <p> <strong>Genre:</strong> {{ initialMovie.Genre }} </p>
+            <p> <strong>Actors:</strong> {{ initialMovie.Actors }} </p>
+            <p> <strong>Directed by :</strong> {{ initialMovie.Director }} </p>
+            <p> <strong>Written :</strong> {{ initialMovie.Writer }} </p>
+            <p-rating [(ngModel)]="val"></p-rating>
+            <footer>
+                <p-chart type="bar" [data]="ratingData"></p-chart>
+            </footer>
+        </div>
+
+
+
+
+    </div>
+</p-dialog>
+
+<ng-template #notFound>
+    <div class="error">
+        <h2>Sorry, there has been an error retrieving your movies! <br> Please try again with a different keyword.
+        </h2>
+    </div>
+</ng-template>
