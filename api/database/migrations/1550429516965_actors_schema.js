@@ -8,6 +8,7 @@ class ActorsSchema extends Schema {
     this.create('actors', (table) => {
       table.increments()
       table.timestamps()
+      table.string('name', 50).notNullable()
     })
   }
 

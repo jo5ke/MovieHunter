@@ -8,6 +8,8 @@ class ReviewsSchema extends Schema {
     this.create('reviews', (table) => {
       table.increments()
       table.timestamps()
+      table.text('text', 500).notNullable()
+      table.bigInteger('score').notNullable()
     })
   }
 
