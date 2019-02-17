@@ -12,7 +12,7 @@ export class CinemaService {
   constructor(private http: Http) { }
 
    getInitialMovies(): Observable<any> {
-        return this.http.get('https://www.omdbapi.com/?i=tt0137523&apikey=f036137b')
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://www.omdbapi.com/?i=tt0137523&apikey=f036137b')
         .map((res: Response) => res.json())
         .catch((err) => {
           return Observable.throw(err);
@@ -20,7 +20,7 @@ export class CinemaService {
     }
 
     searchMovies(data, type): Observable<any> {
-        return this.http.get('https://www.omdbapi.com/?s=' + data + '&type=' + type + '&apikey=f036137b')
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://www.omdbapi.com/?s=' + data + '&type=' + type + '&apikey=f036137b')
         .map((res: Response) => res.json())
         .catch((err) => {
           return Observable.throw(err);
@@ -28,7 +28,7 @@ export class CinemaService {
     }
 
     searchSingleMovie(data): Observable<any> {
-        return this.http.get('https://www.omdbapi.com/?i=' + data + '&apikey=f036137b')
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://www.omdbapi.com/?i=' + data + '&apikey=f036137b')
         .map((res: Response) => res.json())
         .catch((err) => {
           return Observable.throw(err);
