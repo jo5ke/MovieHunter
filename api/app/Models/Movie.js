@@ -11,24 +11,36 @@ const Model = use('Model')
  * components:
  *   schemas:
  *     NewMovie:
- *       type: objectq
- *       required:
- *         - name
+ *       type: object
  *       properties:
- *         name:
+ *         Title:
  *           type: string
- *         genre:
+ *         Year:
  *           type: string
- *         ratings:
+ *         Plot:
  *           type: string
- *         image:
+ *         Rated:
+ *           type: string
+ *         Released:
+ *           type: string
+ *         Genre:
+ *           type: string
+ *         Director:
+ *           type: string
+ *         Writer:
+ *           type: string
+ *         Poster:
+ *           type: string
+ *         Ratings:
+ *           type: json
+ *         imdbID:
  *           type: string
  *     UpdateMovies:
  *       type: object
  *       properties:
  *         name:
  *           type: string
- *     Movies:
+ *     Movie:
  *       allOf:
  *         - $ref: '#/components/schemas/NewMovies'
  *         - type: object

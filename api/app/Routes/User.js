@@ -101,7 +101,6 @@ Route.group('user', () => {
    *         $ref: '#/components/responses/ValidateFailed'
    */
   Route.put('/:id', 'Api/UsersController.update')
-    .middleware(['auth:jwt'])
     .instance('App/Models/User')
     .validator('UpdateUser')
 
@@ -123,7 +122,6 @@ Route.group('user', () => {
    *         $ref: '#/components/responses/Unauthorized'
    */
   Route.delete('/:id', 'Api/UsersController.destroy')
-    .middleware(['auth:jwt'])
     .instance('App/Models/User')
 
   /**
@@ -162,7 +160,6 @@ Route.group('user', () => {
    *         $ref: '#/components/responses/ValidateFailed'
    */
   Route.post('/:id/upload', 'Api/UsersController.upload')
-    .middleware(['auth:jwt'])
     .instance('App/Models/User')
 
   /**
@@ -210,7 +207,6 @@ Route.group('user', () => {
    *         $ref: '#/components/responses/Forbidden'
    */
   Route.delete('/:id/images/:imageId', 'Api/UsersController.deleteImage')
-    .middleware(['auth:jwt'])
     .instance('App/Models/User')
 
   /**

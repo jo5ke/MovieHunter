@@ -60,12 +60,12 @@ export class MoviesListComponent implements OnInit {
     const movieSearcher = this.cinemaService.searchMovies(this.movieSearch, this.mediaType)
     .subscribe(res => {
 
-        this.listOfMovies = res.Search;
-
+        this.listOfMovies = res.data;
+        console.log(res.data);
     });
   }
 
-  showSingleMovie(imdb) {
+  showSingleMovie(imdb, id) {
     this.cinemaService.searchSingleMovie(imdb)
     .subscribe(res => {
       this.showDialog = true;
@@ -76,7 +76,28 @@ export class MoviesListComponent implements OnInit {
       this.ratingData.datasets[0].data[0] = imd;
       this.ratingData.datasets[1].data[0] = rt;
       this.ratingData.datasets[2].data[0] = mc;
+
     });
+
+    console.log(id);
+    this.cinemaService.updateMovie(id, this.initialMovie)
+      .subscribe(res => {
+        console.log(res);
+
+    });
+
+
+    // this.cinemaService.searchSingleMovie(imdb)
+    // .subscribe(res => {
+    //   this.showDialog = true;
+    //   this.initialMovie = res.data;
+    //   const imd = 70;
+    //   const rt = 20;
+    //   const mc = 0;
+    //   this.ratingData.datasets[0].data[0] = imd;
+    //   this.ratingData.datasets[1].data[0] = rt;
+    //   this.ratingData.datasets[2].data[0] = mc;
+    // });
   }
 
   addToFavorites(movie) {

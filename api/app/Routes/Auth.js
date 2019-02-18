@@ -33,7 +33,7 @@ Route.group('auth', () => {
    *         $ref: '#/components/responses/ValidateFailed'
    */
   Route.post('/register', 'Api/AuthController.register')
-    .validator('StoreUser')
+    // .validator('StoreUser')
 
   /**
    * @swagger

@@ -20,3 +20,16 @@ Factory.blueprint('App/Models/User', (faker) => {
     password: faker.password()
   }
 })
+
+Factory.blueprint('App/Models/Movie', (faker) => {
+  return {
+    Title: faker.name(),
+    Plot: faker.paragraph({ sentences: 2 }),
+    Genre: faker.string({length : 5}),
+    Director: faker.name(),
+    Writer: faker.name(),
+    Poster: faker.avatar(),
+    Released: faker.name(),
+    Year: faker.timestamp(),
+  }
+})

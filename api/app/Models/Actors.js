@@ -48,7 +48,7 @@ class Actor extends Model {
    *
    * @return {Object}
    */
-  user () {
+  movies () {
     return this.hasMany('App/Models/Movies')
   }
 

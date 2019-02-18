@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="ui-card-footer">
-                    <button pButton type="button" label="View" icon="fa-check" (click)="showSingleMovie(movie.imdbID)"></button>
+                    <button pButton type="button" label="View" icon="fa-check" (click)="showSingleMovie(movie.imdbID, movie._id)"></button>
                     <p (click)="addToFavorites(movie)"><i class="fa fa-2x" [ngClass]="{'fa-star' : isFavorited(movie), 'fa-star-o' : !isFavorited(movie)}" pTooltip="Add to favorites" tooltipPosition="bottom"></i></p>
                     <a href="https://www.imdb.com/title/{{movie.imdbID}}" target="new">
                         <button class="fa-pull-right imdbButton" pButton type="button" label="IMDb"></button>
@@ -84,7 +84,7 @@
                 {{ initialMovie.Plot }}
             </p-fieldset>
             <p> <strong>Genre:</strong> {{ initialMovie.Genre }} </p>
-            <p> <strong>Actors:</strong> {{ initialMovie.Actors }} </p>
+            <!-- <p> <strong>Actors:</strong> {{ initialMovie.Actors }} </p> -->
             <p> <strong>Directed by :</strong> {{ initialMovie.Director }} </p>
             <p> <strong>Written :</strong> {{ initialMovie.Writer }} </p>
             <p-rating [(ngModel)]="val"></p-rating>

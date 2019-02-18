@@ -15,6 +15,13 @@ const Factory = use('Factory')
 
 class DatabaseSeeder {
   async run () {
+    const usersArray = await Factory
+      .model('App/Models/User')
+      .createMany(5)
+
+    const moviesArray = await Factory
+      .model('App/Models/Movie')
+      .createMany(5)
   }
 }
 
